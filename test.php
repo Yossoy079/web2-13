@@ -1,9 +1,3 @@
-<?php
-
-$post_test = $_POST['test'];
- 
-?>
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +11,7 @@ $post_test = $_POST['test'];
     var TestClass = ncmb.DataStore("TestClass");
     
     var testClass = new TestClass();
-    testClass.set("message",<?php echo $post_test. ?>);
+    testClass.set("message",<?php echo htmlspecialchars($_POST['test']); ?>);
     testClass.save()
       .then(function(){
         // 保存に成功した場合の処理
@@ -27,6 +21,6 @@ $post_test = $_POST['test'];
       });
   </script>
   <body>
-  <?php echo $post_test.; ?>
+  <?php echo htmlspecialchars($_POST['test']); ?>
   </body>
 </html>
